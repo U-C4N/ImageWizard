@@ -82,7 +82,8 @@ export default function Component() {
     const formats = ['JPG', 'WEBP', 'PNG']
     const converted: ConvertedImage[] = []
 
-    for (const [index, format] of formats.entries()) {
+    for (let index = 0; index < formats.length; index++) {
+      const format = formats[index]
       const options = {
         maxSizeMB: 1,
         maxWidthOrHeight: 1920,
@@ -689,10 +690,10 @@ export default function Component() {
       <footer className="mt-8 text-center text-sm text-gray-500">
         <p>© 2024 ImageWizard</p>
         <div className="flex justify-center space-x-4 mt-2">
-          <a href="https://github.com/imagewizard" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/U-C4N" target="_blank" rel="noopener noreferrer">
             <Github className="w-5 h-5 text-gray-400 hover:text-gray-600 transition-colors" />
           </a>
-          <a href="https://twitter.com/imagewizard" target="_blank" rel="noopener noreferrer">
+          <a href="https://x.com/UEdizaslan" target="_blank" rel="noopener noreferrer">
             <Twitter className="w-5 h-5 text-gray-400 hover:text-gray-600 transition-colors" />
           </a>
         </div>
