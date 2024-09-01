@@ -2,6 +2,7 @@ import React, { useState, useCallback, useRef } from 'react'
 import { Button } from "@/components/ui/button"
 import { Slider } from "@/components/ui/slider"
 import { Download } from 'lucide-react'
+import Image from 'next/image'
 
 interface BackgroundRemovalProps {
   originalImage: string
@@ -18,7 +19,7 @@ export function BackgroundRemoval({ originalImage }: BackgroundRemovalProps) {
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    const img = new Image()
+    const img = new HTMLImageElement()
     img.src = originalImage
     img.onload = () => {
       canvas.width = img.width
@@ -89,11 +90,19 @@ export function BackgroundRemoval({ originalImage }: BackgroundRemovalProps) {
       {removedBgImage && (
         <div className="flex flex-col items-center mt-4">
           <div className="relative w-full h-64">
-            <img src={originalImage} alt="Original" className="absolute top-0 left-0 w-full h-full object-contain" />
-            <img
+            <Image
+              src={originalImage}
+              alt="Original"
+              width={256}
+              height={256}
+              className="max-w-full h-auto rounded-lg shadow-md object-contain"
+            />
+            <Image
               src={removedBgImage}
               alt="Background Removed"
-              className="absolute top-0 left-0 w-full h-full object-contain"
+              width={256}
+              height={256}
+              className="max-w-full h-auto rounded-lg shadow-md object-contain"
               style={{ clipPath: `inset(0 ${100 - compareSlider}% 0 0)` }}
             />
             <div

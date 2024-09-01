@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import imageCompression from 'browser-image-compression'
 import { Download } from 'lucide-react'
+import Image from 'next/image'
 
 interface ConvertedImage {
   format: string;
@@ -12,7 +13,7 @@ interface ConvertedImage {
 }
 
 interface ImageConversionProps {
-  originalImage: File
+  originalImage: File | null
 }
 
 export function ImageConversion({ originalImage }: ImageConversionProps) {
@@ -82,7 +83,13 @@ export function ImageConversion({ originalImage }: ImageConversionProps) {
           {convertedImages.map((image, index) => (
             <div key={index} className="flex items-center justify-between bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-3 hover:shadow-md transition duration-300 ease-in-out">
               <div className="flex items-center space-x-3">
-                <img src={image.src} alt={`Converted ${image.format}`} className="w-12 h-12 object-cover rounded" />
+                <Image
+                  src={image.src}
+                  alt={`Converted ${image.format}`}
+                  width={48}
+                  height={48}
+                  className="object-cover rounded"
+                />
                 <div>
                   <span className="font-medium">{image.format}</span>
                   <p className="text-sm text-gray-500 dark:text-gray-400">{image.size.toFixed(2)} MB</p>

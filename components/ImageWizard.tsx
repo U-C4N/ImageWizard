@@ -11,6 +11,7 @@ import { AsciiArt } from './AsciiArt'
 import { Pixelation } from './Pixelation'
 import { BackgroundRemoval } from './BackgroundRemoval'
 import { Effects } from './Effects'
+import Image from 'next/image'
 
 export default function ImageWizard() {
   const [originalImage, setOriginalImage] = useState<File | null>(null)
@@ -63,10 +64,12 @@ export default function ImageWizard() {
             <div className="p-6">
               {originalImage && (
                 <div className="mb-6 flex justify-between items-center">
-                  <img
+                  <Image
                     src={originalPreview}
                     alt="Original"
-                    className="max-w-full h-auto max-h-64 rounded-lg shadow-md"
+                    width={256}
+                    height={256}
+                    className="max-w-full h-auto max-h-64 rounded-lg shadow-md object-contain"
                   />
                   <Button variant="outline" onClick={resetImage}>
                     <Upload className="mr-2 h-4 w-4" /> Upload New Image
