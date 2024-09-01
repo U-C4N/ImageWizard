@@ -4,6 +4,10 @@ const nextConfig = {
     if (!isServer) {
       config.output.globalObject = 'self';
     }
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      fs: false,
+    };
     return config;
   },
 }
