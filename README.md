@@ -1,4 +1,4 @@
-# ImageWizard
+# ImageWizard v2
 
 ImageWizard is a versatile image processing web application that allows users to convert, compress, pixelate, and apply various effects to images, as well as generate ASCII art and remove backgrounds. The application is built with modern web technologies and offers a user-friendly interface for a variety of image manipulation tasks.
 
